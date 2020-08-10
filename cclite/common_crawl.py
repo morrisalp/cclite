@@ -83,3 +83,12 @@ class WARCData:
                 yield out
             except StopIteration:
                 break
+
+    def filtered_data(self):
+        for datum in self.data():
+            langs = datum.get('languages', [])
+            is_english = len(langs) > 0 and langs[0]['code'] == 'en' and langs[0]['text-covered'] >= 0.99
+            is_utf8 = datum.get('content-type', '').lower().replace(' ', '') == 'text/html;charset=utf-8'
+            http_ok = datum.get('http_response', '') == 'HTTP/1.1 200 OK'
+            if is_english and is_utf8 and http_ok:
+                yield datum

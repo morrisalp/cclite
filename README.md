@@ -22,6 +22,9 @@ warcs = parser.get_warcs()
 # calling next(data) will take a while (a few minutes) since it loads a whole WARC
 data = warcs[0].data()
 
+# only gets English pages with HTTP 200 containing UTF-8 HTML
+filtered_data = warcs[0].filtered_data()
+
 # query index for data associated with URL
 # returns array of WARCData objects which can be used as above
 url_data = parser.url_search('http://example.com/')

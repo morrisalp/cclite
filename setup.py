@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="cclite",
-    version="0.0.1",
+    version="0.0.2",
     author="Morris Alper",
     author_email="morrisalp@gmail.com",
     description="A light Common Crawl API for Python",
